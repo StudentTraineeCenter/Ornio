@@ -23,7 +23,7 @@ const TYP = {
   brodivi: uuid(15),
 }
 
-const DRUH = {
+const PTAK = {
   rybak: uuid(21),
   cejka: uuid(22),
   lednacek: uuid(23),
@@ -58,9 +58,9 @@ export const typyPtaku: Typ_ptaka[] = [
 
 // ─── Druhy (encyklopedie) ─────────────────────────────
 
-export const druhy: Ptaka[] = [
+export const ptaky: Ptaka[] = [
   {
-    id: DRUH.rybak,
+    id: PTAK.rybak,
     typ_ptaka_id: TYP.vodni,
     nazev_cz: 'Rybák obecný',
     nazev_lat: 'Sterna hirundo',
@@ -73,7 +73,7 @@ export const druhy: Ptaka[] = [
     hnizdi_do_mesic: 7,
   },
   {
-    id: DRUH.cejka,
+    id: PTAK.cejka,
     typ_ptaka_id: TYP.brodivi,
     nazev_cz: 'Čejka chocholatá',
     nazev_lat: 'Vanellus vanellus',
@@ -85,7 +85,7 @@ export const druhy: Ptaka[] = [
     hnizdi_do_mesic: 6,
   },
   {
-    id: DRUH.lednacek,
+    id: PTAK.lednacek,
     typ_ptaka_id: TYP.pevci,
     nazev_cz: 'Ledňáček říční',
     nazev_lat: 'Alcedo atthis',
@@ -97,7 +97,7 @@ export const druhy: Ptaka[] = [
     hnizdi_do_mesic: 8,
   },
   {
-    id: DRUH.kos,
+    id: PTAK.kos,
     typ_ptaka_id: TYP.pevci,
     nazev_cz: 'Kos černý',
     nazev_lat: 'Turdus merula',
@@ -108,7 +108,7 @@ export const druhy: Ptaka[] = [
     hnizdi_do_mesic: 8,
   },
   {
-    id: DRUH.kane,
+    id: PTAK.kane,
     typ_ptaka_id: TYP.dravci,
     nazev_cz: 'Káně lesní',
     nazev_lat: 'Buteo buteo',
@@ -120,7 +120,7 @@ export const druhy: Ptaka[] = [
     hnizdi_do_mesic: 7,
   },
   {
-    id: DRUH.sykora,
+    id: PTAK.sykora,
     typ_ptaka_id: TYP.pevci,
     nazev_cz: 'Sýkora koňadra',
     nazev_lat: 'Parus major',
@@ -132,7 +132,7 @@ export const druhy: Ptaka[] = [
     hnizdi_do_mesic: 6,
   },
   {
-    id: DRUH.strakapoud,
+    id: PTAK.strakapoud,
     typ_ptaka_id: TYP.splhavci,
     nazev_cz: 'Strakapoud velký',
     nazev_lat: 'Dendrocopos major',
@@ -144,7 +144,7 @@ export const druhy: Ptaka[] = [
     hnizdi_do_mesic: 6,
   },
   {
-    id: DRUH.labut,
+    id: PTAK.labut,
     typ_ptaka_id: TYP.vodni,
     nazev_cz: 'Labuť velká',
     nazev_lat: 'Cygnus olor',
@@ -229,7 +229,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(501),
     zapisnik_id: ZAP.amerika,
-    ptak_id: DRUH.rybak,
+    ptak_id: PTAK.rybak,
     chovani: 'hnízdí',
     cas_pozorovani: '2026-04-12T07:10:00',
     poznamka: 'Kolonie na ostrůvku.',
@@ -237,7 +237,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(502),
     zapisnik_id: ZAP.amerika,
-    ptak_id: DRUH.lednacek,
+    ptak_id: PTAK.lednacek,
     chovani: 'krmí se',
     cas_pozorovani: '2026-04-12T07:45:00',
     poznamka: '',
@@ -245,7 +245,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(503),
     zapisnik_id: ZAP.amerika,
-    ptak_id: DRUH.cejka,
+    ptak_id: PTAK.cejka,
     chovani: 'migruje',
     cas_pozorovani: '2026-04-12T07:50:00',
     poznamka: 'Hejno asi deseti kusů.',
@@ -253,7 +253,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(504),
     zapisnik_id: ZAP.amerika,
-    ptak_id: DRUH.cejka,
+    ptak_id: PTAK.cejka,
     chovani: 'odpočívá',
     cas_pozorovani: '2026-04-12T08:40:00',
     poznamka: 'Na louce za hrází.',
@@ -263,7 +263,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(505),
     zapisnik_id: ZAP.slavkovsky,
-    ptak_id: DRUH.strakapoud,
+    ptak_id: PTAK.strakapoud,
     chovani: 'bubnuje',
     cas_pozorovani: '2026-04-03T09:20:00',
     poznamka: '',
@@ -271,7 +271,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(506),
     zapisnik_id: ZAP.slavkovsky,
-    ptak_id: DRUH.kos,
+    ptak_id: PTAK.kos,
     chovani: 'zpívá',
     cas_pozorovani: '2026-04-03T10:05:00',
     poznamka: 'Samec na vrcholku smrku.',
@@ -279,7 +279,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(507),
     zapisnik_id: ZAP.slavkovsky,
-    ptak_id: DRUH.kane,
+    ptak_id: PTAK.kane,
     chovani: 'krouží',
     cas_pozorovani: '2026-04-03T11:15:00',
     poznamka: '',
@@ -289,7 +289,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(508),
     zapisnik_id: ZAP.orlice,
-    ptak_id: DRUH.lednacek,
+    ptak_id: PTAK.lednacek,
     chovani: 'loví',
     cas_pozorovani: '2026-05-20T17:40:00',
     poznamka: '',
@@ -297,7 +297,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(509),
     zapisnik_id: ZAP.orlice,
-    ptak_id: DRUH.lednacek,
+    ptak_id: PTAK.lednacek,
     chovani: 'přelétá',
     cas_pozorovani: '2026-05-20T18:20:00',
     poznamka: 'Podruhé, proti proudu.',
@@ -305,7 +305,7 @@ export const spatreni: Spatreni[] = [
   {
     id: uuid(510),
     zapisnik_id: ZAP.orlice,
-    ptak_id: DRUH.sykora,
+    ptak_id: PTAK.sykora,
     chovani: 'zpívá',
     cas_pozorovani: '2026-05-20T18:50:00',
     poznamka: '',

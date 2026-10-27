@@ -1,59 +1,83 @@
+import { ArrowLeft } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
 import { Link, useParams } from 'react-router-dom'
-import { getDruh } from '../api'
+import { getPtak } from '../api'
 import type { UUID } from '../types'
 
-const mesice = [
-  'leden', 'únor', 'březen', 'duben', 'květen', 'červen',
-  'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec',
-]
+const mesice = ['led', 'úno', 'bře', 'dub', 'kvě', 'čvn', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro']
 
 export default function DruhPage() {
   const { druhId } = useParams()
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['druh', druhId],
-    queryFn: () => getDruh(druhId as UUID),
+    queryFn: () => getPtak(druhId as UUID),
     enabled: !!druhId,
   })
 
-  if (isLoading) return <p className="p-6 text-gray-500">Načítám...</p>
+  if (isLoading) return <p className="p-6 text-muted">Načítám...</p>
   if (isError || !data)
-    return <p className="p-6 text-red-600">Druh se nepodařilo načíst.</p>
+    return <p className="p-6 text-red-700">Druh se nepodařilo načíst.</p>
+
+  const hnizdi = (m: number) =>
+    data.hnizdi_od_mesic <= data.hnizdi_do_mesic
+      ? m >= data.hnizdi_od_mesic && m <= data.hnizdi_do_mesic
+      : m >= data.hnizdi_od_mesic || m <= data.hnizdi_do_mesic
 
   return (
-    <article className="mx-auto max-w-2xl p-6">
+    <article className="mx-auto max-w-3xl p-4 md:p-8">
       <Link
         to="/encyklopedie"
-        className="mb-4 inline-block text-sm text-emerald-700 md:hidden"
+        className="mb-4 inline-flex items-center gap-1 text-sm font-medium text-fern md:hidden"
       >
-        ← Zpět na encyklopedii
+        <ArrowLeft size={16} />
+        Zpět na encyklopedii
       </Link>
 
-      <header className="mb-6">
-        <h2 className="text-2xl font-bold text-emerald-900">{data.nazev_cz}</h2>
-        <p className="italic text-gray-600">{data.nazev_lat}</p>
-        <span className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-0.5 text-xs text-emerald-800">
+      <header className="mb-8 rounded-2xl bg-pine p-6 text-cream md:p-8">
+        <span className="inline-block rounded-full bg-lime px-3 py-1 text-xs font-medium text-pine">
           {data.typ_ptaka.nazev}
         </span>
+        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+          {data.nazev_cz}
+        </h2>
+        <p className="mt-1 text-lg italic text-lime">{data.nazev_lat}</p>
       </header>
 
-      <Info nadpis="Jak ho poznat" text={data.jak_poznat} />
-      <Info nadpis="Rozšíření" text={data.rozsireni} />
-      <Info nadpis="Potrava" text={data.potrava} />
-      <Info
-        nadpis="Doba hnízdění"
-        text={`${mesice[data.hnizdi_od_mesic - 1]} – ${mesice[data.hnizdi_do_mesic - 1]}`}
-      />
+      <div className="space-y-6">
+        <Blok nadpis="Jak ho poznat" text={data.jak_poznat} />
+        <Blok nadpis="Rozšíření" text={data.rozsireni} />
+        <Blok nadpis="Potrava" text={data.potrava} />
+
+        <section>
+          <h3 className="mb-3 text-2xl font-semibold text-pine">
+            Doba hnízdění
+          </h3>
+          <div className="grid grid-cols-6 gap-1.5 sm:grid-cols-12">
+            {mesice.map((nazev, i) => (
+              <div
+                key={nazev}
+                className={`rounded-lg py-2 text-center text-xs font-medium ${
+                  hnizdi(i + 1)
+                    ? 'bg-fern text-cream'
+                    : 'bg-sand text-muted'
+                }`}
+              >
+                {nazev}
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </article>
   )
 }
 
-function Info({ nadpis, text }: { nadpis: string; text: string }) {
+function Blok({ nadpis, text }: { nadpis: string; text: string }) {
   return (
-    <section className="mb-5">
-      <h3 className="mb-1 text-lg font-semibold">{nadpis}</h3>
-      <p className="text-gray-700">{text}</p>
+    <section>
+      <h3 className="mb-2 text-2xl font-semibold text-pine">{nadpis}</h3>
+      <p className="leading-relaxed">{text}</p>
     </section>
   )
 }
