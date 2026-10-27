@@ -3,6 +3,7 @@ import AppLayout from './layout/AppLayout'
 import Prazdno from './pages/Prazdno'
 import ZapisnikPage from './pages/ZapisnikPage'
 import PtakPage from './pages/PtakPage'
+import ZapisnikFormPage from './pages/ZapisnikFormPage'
 
 export default function App() {
   return (
@@ -12,18 +13,20 @@ export default function App() {
           <Route index element={<Navigate to="/denik" replace />} />
           <Route
             path="denik"
-            element={<Prazdno text="Vyber výlet v seznamu vlevo." />}
+            element={<Prazdno text="Vyberte výlet v seznamu vlevo." />}
           />
           <Route path="denik/:zapisnikId" element={<ZapisnikPage />} />
           <Route
             path="encyklopedie"
-            element={<Prazdno text="Vyber druh v seznamu vlevo." />}
+            element={<Prazdno text="Vyberte druh v seznamu vlevo." />}
           />
           <Route path="encyklopedie/:druhId" element={<PtakPage />} />
           <Route
             path="encyklopedie/:druhId"
             element={<Prazdno text="Detail druhu bude v dalším kroku." />}
           />
+          <Route path="denik/novy" element={<ZapisnikFormPage />} />
+          <Route path="denik/:zapisnikId/upravit" element={<ZapisnikFormPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

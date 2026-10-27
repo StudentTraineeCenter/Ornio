@@ -2,7 +2,7 @@ export type UUID = `${string}-${string}-${string}-${string}-${string}`
 
 export type Viditelnost = 'soukromy' | 'pratele' | 'verejny'
 
-// ─── Tabulky z databáze ───────────────────────────────
+// Tabulky z databaze
 
 export interface Typ_ptaka {
   id: UUID
@@ -50,7 +50,7 @@ export interface Spatreni {
   poznamka: string
 }
 
-// ─── Odpovědi API (data spojená přes JOIN v backendu) ─
+// Odpovedi API (data spojena pres JOIN v backend)
 
 export interface ZapisnikSeznam extends Zapisnik {
   lokalita: Lokalita
@@ -66,4 +66,23 @@ export interface ZapisnikDetail extends ZapisnikSeznam {
 
 export interface PtakaDetail extends Ptaka {
   typ_ptaka: Typ_ptaka
+}
+
+// Data odesilana z formulare
+
+export interface SpatreniInput{
+  ptak_id: UUID
+  chovani: string
+  cas_pozorovani: string
+  poznamka: string
+}
+
+export interface ZapisnikInput{
+  nazev: string
+  lokalita_id: UUID
+  cas_od: string
+  cas_do: string
+  poznamky: string
+  viditelnost: Viditelnost
+  spatreni: SpatreniInput[]
 }

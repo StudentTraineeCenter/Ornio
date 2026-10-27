@@ -1,0 +1,339 @@
+{
+  "communities": {
+    "0": [
+      "frontend_src_api_index",
+      "frontend_src_mocks_data",
+      "frontend_src_mocks_data_druh",
+      "frontend_src_mocks_data_druhy",
+      "frontend_src_mocks_data_lok",
+      "frontend_src_mocks_data_lokality",
+      "frontend_src_mocks_data_spatreni",
+      "frontend_src_mocks_data_typ",
+      "frontend_src_mocks_data_typyptaku",
+      "frontend_src_mocks_data_user_id",
+      "frontend_src_mocks_data_uuid",
+      "frontend_src_mocks_data_zap",
+      "frontend_src_mocks_data_zapisniky",
+      "frontend_src_types_index",
+      "frontend_src_types_index_lokalita",
+      "frontend_src_types_index_ptaka",
+      "frontend_src_types_index_ptakadetail",
+      "frontend_src_types_index_spatreni",
+      "frontend_src_types_index_spatrenisptakem",
+      "frontend_src_types_index_typ_ptaka",
+      "frontend_src_types_index_uuid",
+      "frontend_src_types_index_zapisnik",
+      "frontend_src_types_index_zapisnikdetail",
+      "frontend_src_types_index_zapisnikseznam"
+    ],
+    "1": [
+      "frontend_tsconfig_app",
+      "frontend_tsconfig_app_compileroptions",
+      "frontend_tsconfig_app_compileroptions_allowarbitraryextensions",
+      "frontend_tsconfig_app_compileroptions_allowimportingtsextensions",
+      "frontend_tsconfig_app_compileroptions_erasablesyntaxonly",
+      "frontend_tsconfig_app_compileroptions_jsx",
+      "frontend_tsconfig_app_compileroptions_lib",
+      "frontend_tsconfig_app_compileroptions_module",
+      "frontend_tsconfig_app_compileroptions_moduledetection",
+      "frontend_tsconfig_app_compileroptions_moduleresolution",
+      "frontend_tsconfig_app_compileroptions_noemit",
+      "frontend_tsconfig_app_compileroptions_nofallthroughcasesinswitch",
+      "frontend_tsconfig_app_compileroptions_nounusedlocals",
+      "frontend_tsconfig_app_compileroptions_nounusedparameters",
+      "frontend_tsconfig_app_compileroptions_skiplibcheck",
+      "frontend_tsconfig_app_compileroptions_target",
+      "frontend_tsconfig_app_compileroptions_tsbuildinfofile",
+      "frontend_tsconfig_app_compileroptions_types",
+      "frontend_tsconfig_app_compileroptions_verbatimmodulesyntax",
+      "frontend_tsconfig_app_include"
+    ],
+    "2": [
+      "frontend_src_api_index_getdruhy",
+      "frontend_src_api_index_gethnizdicidruhy",
+      "frontend_src_api_index_getzapisniky",
+      "frontend_src_api_index_zpozdeni",
+      "frontend_src_components_druhsearch",
+      "frontend_src_components_druhsearch_druhsearch",
+      "frontend_src_components_hnizdiciwidget",
+      "frontend_src_components_hnizdiciwidget_hnizdiciwidget",
+      "frontend_src_components_zapisniklist",
+      "frontend_src_components_zapisniklist_zapisniklist",
+      "frontend_src_layout_applayout",
+      "frontend_src_layout_sidebar",
+      "frontend_src_layout_sidebar_prepinac",
+      "frontend_src_layout_sidebar_sidebar",
+      "frontend_src_lib_format",
+      "frontend_src_lib_format_denmesic",
+      "ref_lucide_react",
+      "ref_react_router_dom"
+    ],
+    "3": [
+      "frontend_tsconfig_node",
+      "frontend_tsconfig_node_compileroptions",
+      "frontend_tsconfig_node_compileroptions_allowimportingtsextensions",
+      "frontend_tsconfig_node_compileroptions_erasablesyntaxonly",
+      "frontend_tsconfig_node_compileroptions_lib",
+      "frontend_tsconfig_node_compileroptions_module",
+      "frontend_tsconfig_node_compileroptions_moduledetection",
+      "frontend_tsconfig_node_compileroptions_noemit",
+      "frontend_tsconfig_node_compileroptions_nofallthroughcasesinswitch",
+      "frontend_tsconfig_node_compileroptions_nounusedlocals",
+      "frontend_tsconfig_node_compileroptions_nounusedparameters",
+      "frontend_tsconfig_node_compileroptions_skiplibcheck",
+      "frontend_tsconfig_node_compileroptions_target",
+      "frontend_tsconfig_node_compileroptions_tsbuildinfofile",
+      "frontend_tsconfig_node_compileroptions_types",
+      "frontend_tsconfig_node_compileroptions_verbatimmodulesyntax",
+      "frontend_tsconfig_node_include"
+    ],
+    "4": [
+      "frontend_package_dependencies",
+      "frontend_package_dependencies_lucide_react",
+      "frontend_package_dependencies_react",
+      "frontend_package_dependencies_react_dom",
+      "frontend_package_dependencies_react_router_dom",
+      "frontend_package_dependencies_tailwindcss",
+      "frontend_package_dependencies_tanstack_react_query",
+      "frontend_src_index",
+      "frontend_src_main",
+      "frontend_src_main_queryclient",
+      "ref_react",
+      "ref_react_dom",
+      "ref_tailwindcss",
+      "ref_tanstack_react_query"
+    ],
+    "5": [
+      "frontend_src_api_index_getzapisnik",
+      "frontend_src_app",
+      "frontend_src_app_app",
+      "frontend_src_layout_applayout_applayout",
+      "frontend_src_lib_format_cas",
+      "frontend_src_lib_format_datum",
+      "frontend_src_pages_prazdno",
+      "frontend_src_pages_prazdno_prazdno",
+      "frontend_src_pages_zapisnikpage",
+      "frontend_src_pages_zapisnikpage_viditelnosttext",
+      "frontend_src_pages_zapisnikpage_zapisnikpage",
+      "frontend_src_types_index_viditelnost"
+    ],
+    "6": [
+      "frontend_eslint_config",
+      "frontend_package_devdependencies_eslint",
+      "frontend_package_devdependencies_eslint_js",
+      "frontend_package_devdependencies_eslint_plugin_react_hooks",
+      "frontend_package_devdependencies_globals",
+      "ref_eslint",
+      "ref_eslint_js",
+      "ref_eslint_plugin_react_hooks",
+      "ref_globals"
+    ],
+    "7": [
+      "frontend_package",
+      "frontend_package_devdependencies_types_react",
+      "frontend_package_name",
+      "frontend_package_private",
+      "frontend_package_type",
+      "frontend_package_version",
+      "ref_types_react"
+    ],
+    "8": [
+      "frontend_package_dependencies_tailwindcss_vite",
+      "frontend_package_devdependencies_vite",
+      "frontend_package_devdependencies_vitejs_plugin_react",
+      "frontend_vite_config",
+      "ref_tailwindcss_vite",
+      "ref_vite",
+      "ref_vitejs_plugin_react"
+    ],
+    "9": [
+      "frontend_package_devdependencies",
+      "frontend_package_devdependencies_types_node",
+      "frontend_package_devdependencies_types_react_dom",
+      "frontend_package_devdependencies_typescript",
+      "ref_types_node",
+      "ref_types_react_dom",
+      "ref_typescript"
+    ],
+    "10": [
+      "frontend_package_scripts",
+      "frontend_package_scripts_build",
+      "frontend_package_scripts_dev",
+      "frontend_package_scripts_lint",
+      "frontend_package_scripts_preview"
+    ],
+    "11": [
+      "frontend_src_api_index_getdruh",
+      "frontend_src_pages_ptakpage",
+      "frontend_src_pages_ptakpage_blok",
+      "frontend_src_pages_ptakpage_druhpage",
+      "frontend_src_pages_ptakpage_mesice"
+    ],
+    "12": [
+      "frontend_tsconfig",
+      "frontend_tsconfig_files",
+      "frontend_tsconfig_references"
+    ],
+    "13": [
+      "frontend_package_devdependencies_eslint_plugin_react_refresh",
+      "ref_eslint_plugin_react_refresh"
+    ],
+    "14": [
+      "frontend_package_devdependencies_typescript_eslint",
+      "ref_typescript_eslint"
+    ]
+  },
+  "cohesion": {
+    "0": 0.15942028985507245,
+    "1": 0.1,
+    "2": 0.23529411764705882,
+    "3": 0.11764705882352941,
+    "4": 0.16483516483516483,
+    "5": 0.25757575757575757,
+    "6": 0.2222222222222222,
+    "7": 0.2857142857142857,
+    "8": 0.2857142857142857,
+    "9": 0.2857142857142857,
+    "10": 0.4,
+    "11": 0.6,
+    "12": 0.6666666666666666,
+    "13": 1.0,
+    "14": 1.0
+  },
+  "gods": [
+    {
+      "id": "frontend_tsconfig_app_compileroptions",
+      "label": "compilerOptions",
+      "degree": 18
+    },
+    {
+      "id": "frontend_tsconfig_node_compileroptions",
+      "label": "compilerOptions",
+      "degree": 15
+    },
+    {
+      "id": "ref_react_router_dom",
+      "label": "react-router-dom",
+      "degree": 10
+    },
+    {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "degree": 8
+    },
+    {
+      "id": "ref_tanstack_react_query",
+      "label": "@tanstack/react-query",
+      "degree": 8
+    },
+    {
+      "id": "frontend_src_api_index_zpozdeni",
+      "label": "zpozdeni()",
+      "degree": 6
+    },
+    {
+      "id": "frontend_src_layout_sidebar_sidebar",
+      "label": "Sidebar()",
+      "degree": 6
+    },
+    {
+      "id": "frontend_src_app_app",
+      "label": "App()",
+      "degree": 5
+    },
+    {
+      "id": "frontend_package_scripts",
+      "label": "scripts",
+      "degree": 5
+    },
+    {
+      "id": "frontend_src_types_index_ptaka",
+      "label": "Ptaka",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "ZapisnikList()",
+      "target": "getZapisniky()",
+      "source_files": [
+        "frontend/src/components/ZapisnikList.tsx",
+        "frontend/src/api/index.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "why": "inferred connection - not explicitly stated in source"
+    },
+    {
+      "source": "AppLayout()",
+      "target": "Sidebar()",
+      "source_files": [
+        "frontend/src/layout/AppLayout.tsx",
+        "frontend/src/layout/Sidebar.tsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "DruhPage()",
+      "target": "getDruh()",
+      "source_files": [
+        "frontend/src/pages/PtakPage.tsx",
+        "frontend/src/api/index.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "DruhSearch()",
+      "target": "getDruhy()",
+      "source_files": [
+        "frontend/src/components/DruhSearch.tsx",
+        "frontend/src/api/index.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "HnizdiciWidget()",
+      "target": "getHnizdiciDruhy()",
+      "source_files": [
+        "frontend/src/components/HnizdiciWidget.tsx",
+        "frontend/src/api/index.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `react-router-dom` connect `Sidebar.tsx` to `PtakPage.tsx`, `dependencies`, `ZapisnikPage.tsx`, `package.json`?",
+      "why": "High betweenness centrality (0.103) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `compilerOptions` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `@tanstack/react-query` connect `dependencies` to `Sidebar.tsx`, `PtakPage.tsx`, `ZapisnikPage.tsx`, `package.json`?",
+      "why": "High betweenness centrality (0.080) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `compilerOptions` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `lucide-react` connect `Sidebar.tsx` to `PtakPage.tsx`, `dependencies`, `ZapisnikPage.tsx`, `package.json`?",
+      "why": "High betweenness centrality (0.075) - this node is a cross-community bridge."
+    }
+  ]
+}

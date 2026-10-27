@@ -1,5 +1,44 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+
+  /* Tvoje paleta */
+  --color-lime: #ecf39e;
+  --color-moss: #90a955;
+  --color-fern: #4f772d;
+  --color-pine: #31572c;
+  --color-night: #132a13;
+  --color-cream: #fefae0;
+
+  /* Odvozené odstíny */
+  --color-sand: #f6f1cd;
+  --color-line: #ddd8ad;
+  --color-muted: #566a4f;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-night);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
 }
