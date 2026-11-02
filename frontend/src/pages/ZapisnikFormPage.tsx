@@ -182,7 +182,7 @@ function ZapisnikForm({ id, initial }: { id?: UUID; initial: FormState }) {
         Zpět
       </Link>
 
-      <h2 className="mb-6 text-3xl font-semibold text-pine">
+      <h2 className="mb-6 text-3xl font-semibold text-fern">
         {id ? 'Upravit výlet' : 'Nový výlet'}
       </h2>
 
@@ -262,7 +262,7 @@ function ZapisnikForm({ id, initial }: { id?: UUID; initial: FormState }) {
 
         {id && (
           <section>
-            <h3 className="mb-3 text-2xl font-semibold text-pine">Co jsem viděl</h3>
+            <h3 className="mb-3 text-2xl font-semibold text-fern">Co jsem viděl</h3>
 
             <datalist id="ptaky-nabidka">
               {ptaky?.map((d) => (
@@ -360,7 +360,7 @@ function Popisek({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-medium text-pine">{text}</span>
+      <span className="mb-1.5 block text-sm font-medium text-fern">{text}</span>
       {children}
     </label>
   )

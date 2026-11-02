@@ -16,18 +16,20 @@
   --color-sand: #f6f1cd;
   --color-line: #ddd8ad;
   --color-muted: #566a4f;
+  --color-on-dark: #fefae0;
 }
 
 :root.dark {
-  --color-lime: #b7c86d;
-  --color-moss: #9ab45c;
-  --color-fern: #83a95b;
-  --color-pine: #6f9a5d;
+  --color-lime: #d7ed9b;
+  --color-moss: #a9cf72;
+  --color-fern: #9fd06f;
+  --color-pine: #24452a;
   --color-night: #edf4df;
-  --color-cream: #182118;
-  --color-sand: #223022;
-  --color-line: #40563e;
-  --color-muted: #b7c7ad;
+  --color-cream: #111a13;
+  --color-sand: #1b2b1d;
+  --color-line: #49674d;
+  --color-muted: #c1d0bc;
+  --color-on-dark: #edf4df;
   color-scheme: dark;
 }
 
@@ -61,6 +63,56 @@ a.bg-night {
 .bg-white\/60,
 .bg-white\/70 {
   background-color: color-mix(in srgb, var(--color-cream) 72%, transparent);
+}
+
+:root.dark .bg-white\/60,
+:root.dark .bg-white\/70 {
+  background-color: color-mix(in srgb, #243827 88%, transparent);
+}
+
+:root.dark .ornio-logo {
+  color: var(--color-lime);
+}
+
+:root.dark .border-r.bg-sand {
+  background-color: #19291b;
+}
+
+:root.dark .bg-lime\/50 {
+  background-color: #2b4128;
+}
+
+:root.dark .bg-lime\/50 h3 {
+  color: var(--color-lime);
+}
+
+:root.dark .bg-lime\/50 a:hover,
+:root.dark .bg-lime\/50 a:focus-visible {
+  background-color: #3b5935;
+}
+
+:root.dark .ornio-selected-nav {
+  color: #17311c !important;
+}
+
+:root.dark .ornio-selected-nav .text-muted {
+  color: #31572c !important;
+}
+
+.ornio-detail-header h2 {
+  color: var(--color-on-dark);
+}
+
+.ornio-detail-header > div {
+  color: var(--color-on-dark);
+}
+
+.ornio-detail-header > div svg {
+  color: var(--color-lime);
+}
+
+a.top-nav-active {
+  color: var(--color-on-dark) !important;
 }
 
 a {

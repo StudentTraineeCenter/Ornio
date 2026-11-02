@@ -34,11 +34,11 @@ export default function DruhPage() {
         Zpět na encyklopedii
       </Link>
 
-      <header className="mb-8 rounded-2xl bg-pine p-6 text-cream md:p-8">
+      <header className="ornio-detail-header mb-8 rounded-2xl bg-pine p-6 text-cream md:p-8">
         <span className="inline-block rounded-full bg-lime px-3 py-1 text-xs font-medium text-pine">
           {data.typ_ptaka.nazev}
         </span>
-        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+        <h2 className="mt-3 text-3xl font-semibold text-cream md:text-4xl">
           {data.nazev_cz}
         </h2>
         <p className="mt-1 text-lg italic text-lime">{data.nazev_lat}</p>
@@ -50,7 +50,7 @@ export default function DruhPage() {
         <Blok nadpis="Potrava" text={data.potrava} />
 
         <section>
-          <h3 className="mb-3 text-2xl font-semibold text-pine">
+          <h3 className="mb-3 text-2xl font-semibold text-fern">
             Doba hnízdění
           </h3>
           <div className="grid grid-cols-6 gap-1.5 sm:grid-cols-12">
@@ -76,7 +76,7 @@ export default function DruhPage() {
 function Blok({ nadpis, text }: { nadpis: string; text: string }) {
   return (
     <section>
-      <h3 className="mb-2 text-2xl font-semibold text-pine">{nadpis}</h3>
+      <h3 className="mb-2 text-2xl font-semibold text-fern">{nadpis}</h3>
       <p className="leading-relaxed">{text}</p>
     </section>
   )
