@@ -21,7 +21,6 @@ interface Radek {
   ptakText: string
   ptak_id: UUID | ''
   cas: string
-  chovani: string
   poznamka: string
 }
 
@@ -41,7 +40,6 @@ const novyRadek = (cas: string): Radek => ({
   ptakText: '',
   ptak_id: '',
   cas,
-  chovani: '',
   poznamka: '',
 })
 
@@ -69,7 +67,6 @@ const zDetailu = (z: ZapisnikDetail): FormState => ({
     ptakText: s.ptak.nazev_cz,
     ptak_id: s.ptak_id,
     cas: s.cas_pozorovani.slice(11, 16),
-    chovani: s.chovani,
     poznamka: s.poznamka,
   })),
 })
@@ -154,7 +151,7 @@ function ZapisnikForm({ id, initial }: { id?: UUID; initial: FormState }) {
     if (!f.datum) return setChyba('Vyber datum.')
     if (f.dokdy < f.od)
       return setChyba('Konec výletu nemůže být před jeho začátkem.')
-    if (f.radky.some((r) => !r.ptak_id))
+    if (id && f.radky.some((r) => !r.ptak_id))
       return setChyba('U každého spatření vyber druh z nabídky.')
 
     setChyba('')
@@ -167,7 +164,6 @@ function ZapisnikForm({ id, initial }: { id?: UUID; initial: FormState }) {
       viditelnost: f.viditelnost,
       spatreni: f.radky.map((r) => ({
         ptak_id: r.ptak_id as UUID,
-        chovani: r.chovani,
         cas_pozorovani: `${f.datum}T${r.cas}:00`,
         poznamka: r.poznamka,
       })),
@@ -264,77 +260,71 @@ function ZapisnikForm({ id, initial }: { id?: UUID; initial: FormState }) {
           />
         </Popisek>
 
-        <section>
-          <h3 className="mb-3 text-2xl font-semibold text-pine">Co jsem viděl</h3>
+        {id && (
+          <section>
+            <h3 className="mb-3 text-2xl font-semibold text-pine">Co jsem viděl</h3>
 
-          <datalist id="ptaky-nabidka">
-            {ptaky?.map((d) => (
-              <option key={d.id} value={d.nazev_cz} />
-            ))}
-          </datalist>
+            <datalist id="ptaky-nabidka">
+              {ptaky?.map((d) => (
+                <option key={d.id} value={d.nazev_cz} />
+              ))}
+            </datalist>
 
-          <div className="space-y-3">
-            {f.radky.map((r) => (
-              <div
-                key={r.key}
-                className="rounded-xl border border-line bg-white/60 p-3"
-              >
-                <div className="grid gap-3 sm:grid-cols-[1fr_7rem]">
+            <div className="space-y-3">
+              {f.radky.map((r) => (
+                <div
+                  key={r.key}
+                  className="rounded-xl border border-line bg-white/60 p-3"
+                >
+                  <div className="grid gap-3 sm:grid-cols-[1fr_7rem]">
+                    <input
+                      list="ptaky-nabidka"
+                      className={`${pole} ${
+                        r.ptakText && !r.ptak_id ? 'border-red-400' : ''
+                      }`}
+                      value={r.ptakText}
+                      onChange={(e) => vyberDruh(r.key, e.target.value)}
+                      placeholder="Druh (začni psát...)"
+                    />
+                    <input
+                      type="time"
+                      className={pole}
+                      value={r.cas}
+                      onChange={(e) => zmenRadek(r.key, { cas: e.target.value })}
+                    />
+                  </div>
+                  <div className="mt-3 flex gap-3">
+                    <button
+                      type="button"
+                      onClick={() => odeberRadek(r.key)}
+                      aria-label="Odebrat spatření"
+                      className="shrink-0 rounded-xl border border-line px-3 text-muted transition hover:border-red-300 hover:text-red-700"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
                   <input
-                    list="ptaky-nabidka"
-                    className={`${pole} ${
-                      r.ptakText && !r.ptak_id ? 'border-red-400' : ''
-                    }`}
-                    value={r.ptakText}
-                    onChange={(e) => vyberDruh(r.key, e.target.value)}
-                    placeholder="Druh (začni psát...)"
-                  />
-                  <input
-                    type="time"
-                    className={pole}
-                    value={r.cas}
-                    onChange={(e) => zmenRadek(r.key, { cas: e.target.value })}
-                  />
-                </div>
-                <div className="mt-3 flex gap-3">
-                  <input
-                    className={pole}
-                    value={r.chovani}
+                    className={`${pole} mt-3`}
+                    value={r.poznamka}
                     onChange={(e) =>
-                      zmenRadek(r.key, { chovani: e.target.value })
+                      zmenRadek(r.key, { poznamka: e.target.value })
                     }
-                    placeholder="Chování (hnízdí, krmí se...)"
+                    placeholder="Poznámka ke spatření (nepovinné)"
                   />
-                  <button
-                    type="button"
-                    onClick={() => odeberRadek(r.key)}
-                    aria-label="Odebrat spatření"
-                    className="shrink-0 rounded-xl border border-line px-3 text-muted transition hover:border-red-300 hover:text-red-700"
-                  >
-                    <Trash2 size={16} />
-                  </button>
                 </div>
-                <input
-                  className={`${pole} mt-3`}
-                  value={r.poznamka}
-                  onChange={(e) =>
-                    zmenRadek(r.key, { poznamka: e.target.value })
-                  }
-                  placeholder="Poznámka ke spatření (nepovinné)"
-                />
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <button
-            type="button"
-            onClick={pridejRadek}
-            className="mt-3 inline-flex items-center gap-1.5 rounded-xl border border-dashed border-moss px-4 py-2 text-sm font-medium text-fern transition hover:bg-lime/40"
-          >
-            <Plus size={16} />
-            Přidat spatření
-          </button>
-        </section>
+            <button
+              type="button"
+              onClick={pridejRadek}
+              className="mt-3 inline-flex items-center gap-1.5 rounded-xl border border-dashed border-moss px-4 py-2 text-sm font-medium text-fern transition hover:bg-lime/40"
+            >
+              <Plus size={16} />
+              Přidat spatření
+            </button>
+          </section>
+        )}
       </div>
 
       {chyba && <p className="mt-5 text-sm text-red-700">{chyba}</p>}

@@ -1,7 +1,4 @@
-import type { data } from 'react-router-dom'
-import { 
-  ptaky, lokality, spatreni, typyPtaku, zapisniky, USER_ID
-} from '../mocks/data'
+import { ptaky, lokality, spatreni, typyPtaku, zapisniky, USER_ID } from '../mocks/data'
 
 import type {
   Ptaka,
@@ -12,7 +9,7 @@ import type {
   Lokalita,
   Zapisnik,
   ZapisnikInput,
-  SpatreniInput
+  SpatreniInput,
 } from '../types'
 
 // Simulace zpoždění sítě, ať vidíme načítání
@@ -78,19 +75,31 @@ export async function getLokality(): Promise<Lokalita[]>{
   return lokality
 }
 
-function ulozSpatreni(zapisnik_id: UUID, radky: SpatreniInput[]){
-  for(let i = spatreni.length; i>=0; i--){
-    if(spatreni[i].zapisnik_id === zapisnik_id){
-        spatreni.splice(i, 1)
+function ulozSpatreni(zapisnik_id: UUID, radky: SpatreniInput[]) {
+  for (let i = spatreni.length - 1; i >= 0; i--) {
+    if (spatreni[i].zapisnik_id === zapisnik_id) {
+      spatreni.splice(i, 1)
     }
   }
 
-  radky.forEach((r) =>
-    spatreni.push({ id: crypto.randomUUID(), zapisnik_id, ...r }),
-  )
+  radky.forEach((r) => {
+    spatreni.push({ id: crypto.randomUUID(), zapisnik_id, ...r })
+  })
 }
 
-export async function createZapisnik(input: ZapisnikInput): Promise<ZapisnikDetail>{
+export async function addSpatreni(
+  zapisnik_id: UUID,
+  input: SpatreniInput,
+): Promise<ZapisnikDetail> {
+  await latency()
+  if (!zapisniky.some((z) => z.id === zapisnik_id)) {
+    throw new Error('Výlet nenalezen')
+  }
+  spatreni.push({ id: crypto.randomUUID(), zapisnik_id, ...input })
+  return getZapisnik(zapisnik_id)
+}
+
+export async function createZapisnik(input: ZapisnikInput): Promise<ZapisnikDetail> {
   await latency()
   const { spatreni: radky, ...data } = input
   const novy: Zapisnik = { id: crypto.randomUUID(), user_id: USER_ID, ...data }
@@ -99,9 +108,12 @@ export async function createZapisnik(input: ZapisnikInput): Promise<ZapisnikDeta
   return getZapisnik(novy.id)
 }
 
-export async function updateZapisnik(id: UUID, input: ZapisnikInput,): Promise<ZapisnikDetail>{
+export async function updateZapisnik(
+  id: UUID,
+  input: ZapisnikInput,
+): Promise<ZapisnikDetail> {
   await latency()
-  const zapisnik = zapisniky.find((z) => z.id = id)
+  const zapisnik = zapisniky.find((z) => z.id === id)
   if(!zapisnik) throw new Error('Výlet nenalezen')
   const { spatreni: radky, ...data } = input
   Object.assign(zapisnik, data)

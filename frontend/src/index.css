@@ -18,6 +18,19 @@
   --color-muted: #566a4f;
 }
 
+:root.dark {
+  --color-lime: #b7c86d;
+  --color-moss: #9ab45c;
+  --color-fern: #83a95b;
+  --color-pine: #6f9a5d;
+  --color-night: #edf4df;
+  --color-cream: #182118;
+  --color-sand: #223022;
+  --color-line: #40563e;
+  --color-muted: #b7c7ad;
+  color-scheme: dark;
+}
+
 html,
 body,
 #root {
@@ -32,9 +45,32 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+button {
+  color: inherit;
+}
+
+button.bg-pine,
+button.bg-fern,
+button.bg-night,
+a.bg-pine,
+a.bg-fern,
+a.bg-night {
+  color: var(--color-cream);
+}
+
+.bg-white\/60,
+.bg-white\/70 {
+  background-color: color-mix(in srgb, var(--color-cream) 72%, transparent);
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: none;
 }
 
 h1,
