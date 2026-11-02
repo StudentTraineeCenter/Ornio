@@ -1,9 +1,10 @@
-import { ArrowLeft, ArrowRight, CalendarDays, MapPin, Pencil, Trash2 } from 'lucide-react'
+import { useState, type FormEvent } from 'react'
+import { ArrowLeft, ArrowRight, CalendarDays, MapPin, Pencil, Plus, Trash2 } from 'lucide-react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { getZapisnik, deleteZapisnik } from '../api'
+import { addSpatreni, deleteZapisnik, getPtaky, getZapisnik } from '../api'
 import { cas, datum } from '../lib/format'
-import type { UUID, Viditelnost } from '../types'
+import type { SpatreniInput, UUID, Viditelnost } from '../types'
 
 const viditelnostText: Record<Viditelnost, string> = {
   soukromy: 'Soukromý',
@@ -72,7 +73,7 @@ export default function ZapisnikPage() {
               <li key={s.id}>
                 <Link
                   to={`/encyklopedie/${s.ptak_id}`}
-                  className="group flex items-center gap-4 rounded-xl border border-line bg-white/60 px-4 py-3 transition hover:border-moss hover:bg-lime/40"
+                  className="group flex items-center gap-4 rounded-xl border border-line bg-white/60 px-4 py-3 no-underline transition hover:border-moss hover:bg-lime/40"
                 >
                   <span className="w-12 shrink-0 text-sm font-medium tabular-nums text-muted">
                     {cas(s.cas_pozorovani)}
@@ -81,13 +82,9 @@ export default function ZapisnikPage() {
                     <span className="block text-lg font-medium">
                       {s.ptak.nazev_cz}
                     </span>
-                    <span className="mt-1 flex flex-wrap items-center gap-2 text-sm">
-                      <span className="rounded-full bg-lime px-2.5 py-0.5 text-xs font-medium text-pine">
-                        {s.chovani}
-                      </span>
-                      {s.poznamka && (
-                        <span className="text-muted">{s.poznamka}</span>
-                      )}
+                    <span className="mt-2 block text-sm text-muted">
+                      <span className="font-medium text-pine">Poznámky:</span>{' '}
+                      {s.poznamka || 'bez poznámky'}
                     </span>
                   </span>
                   <ArrowRight
@@ -99,6 +96,7 @@ export default function ZapisnikPage() {
             ))}
           </ul>
         )}
+        <PridatSpatreni zapisnikId={data.id} datum={data.cas_od.slice(0, 10)} />
       </section>
 
       <section>
@@ -128,5 +126,118 @@ export default function ZapisnikPage() {
   </button>
 </div>
     </article>
+  )
+}
+
+function PridatSpatreni({
+  zapisnikId,
+  datum,
+}: {
+  zapisnikId: UUID
+  datum: string
+}) {
+  const [otevreno, setOtevreno] = useState(false)
+  const [ptakId, setPtakId] = useState<UUID | ''>('')
+  const [casPozorovani, setCasPozorovani] = useState('08:00')
+  const [poznamka, setPoznamka] = useState('')
+  const [chyba, setChyba] = useState('')
+  const queryClient = useQueryClient()
+
+  const { data: ptaky } = useQuery({
+    queryKey: ['ptaky', ''],
+    queryFn: () => getPtaky(''),
+    enabled: otevreno,
+  })
+
+  const pridat = useMutation({
+    mutationFn: (input: SpatreniInput) => addSpatreni(zapisnikId, input),
+    onSuccess: (zapisnik) => {
+      queryClient.setQueryData(['zapisnik', zapisnikId], zapisnik)
+      setPtakId('')
+      setPoznamka('')
+      setOtevreno(false)
+      setChyba('')
+    },
+  })
+
+  const odeslat = (event: FormEvent) => {
+    event.preventDefault()
+    if (!ptakId) {
+      setChyba('Vyber druh ptáka.')
+      return
+    }
+
+    pridat.mutate({
+      ptak_id: ptakId,
+      cas_pozorovani: `${datum}T${casPozorovani}:00`,
+      poznamka: poznamka.trim(),
+    })
+  }
+
+  if (!otevreno) {
+    return (
+      <button
+        type="button"
+        onClick={() => setOtevreno(true)}
+        className="mt-3 inline-flex items-center gap-1.5 rounded-xl border border-dashed border-moss px-4 py-2 text-sm font-medium text-fern transition hover:bg-lime/40"
+      >
+        <Plus size={16} />
+        Přidat spatření
+      </button>
+    )
+  }
+
+  return (
+    <form
+      onSubmit={odeslat}
+      className="mt-4 rounded-xl border border-line bg-white/60 p-4"
+    >
+      <div className="grid gap-3 sm:grid-cols-[1fr_8rem]">
+        <select
+          value={ptakId}
+          onChange={(event) => setPtakId(event.target.value as UUID)}
+          className="w-full rounded-xl border border-line bg-white/70 px-3 py-2 text-sm"
+        >
+          <option value="">Vyber druh...</option>
+          {ptaky?.map((ptak) => (
+            <option key={ptak.id} value={ptak.id}>
+              {ptak.nazev_cz}
+            </option>
+          ))}
+        </select>
+        <input
+          type="time"
+          value={casPozorovani}
+          onChange={(event) => setCasPozorovani(event.target.value)}
+          className="w-full rounded-xl border border-line bg-white/70 px-3 py-2 text-sm"
+        />
+      </div>
+      <input
+        value={poznamka}
+        onChange={(event) => setPoznamka(event.target.value)}
+        placeholder="Poznámka (nepovinná)"
+        className="mt-3 w-full rounded-xl border border-line bg-white/70 px-3 py-2 text-sm"
+      />
+      {chyba && <p className="mt-3 text-sm text-red-700">{chyba}</p>}
+      {pridat.isError && (
+        <p className="mt-3 text-sm text-red-700">Pozorování se nepodařilo přidat.</p>
+      )}
+      <div className="mt-3 flex gap-2">
+        <button
+          type="submit"
+          disabled={pridat.isPending}
+          className="rounded-xl bg-pine px-4 py-2 text-sm font-medium text-cream disabled:opacity-60"
+        >
+          {pridat.isPending ? 'Přidávám...' : 'Přidat'}
+        </button>
+        <button
+          type="button"
+          onClick={() => setOtevreno(false)}
+          className="rounded-xl border border-line px-4 py-2 text-sm text-muted"
+        >
+          Zrušit
+        </button>
+      </div>
+    </form>
   )
 }
