@@ -46,11 +46,11 @@ export default function ZapisnikPage() {
         Zpět na výlety
       </Link>
 
-      <header className="mb-8 rounded-2xl bg-pine p-6 text-cream md:p-8">
+      <header className="ornio-detail-header mb-8 rounded-2xl bg-pine p-6 text-cream md:p-8">
         <span className="inline-block rounded-full bg-lime px-3 py-1 text-xs font-medium text-pine">
           {viditelnostText[data.viditelnost]}
         </span>
-        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">{data.nazev}</h2>
+        <h2 className="mt-3 text-3xl font-semibold text-cream md:text-4xl">{data.nazev}</h2>
         <div className="mt-4 space-y-1.5 text-cream/90">
           <p className="flex items-center gap-2">
             <CalendarDays size={18} className="text-lime" />
@@ -64,7 +64,7 @@ export default function ZapisnikPage() {
       </header>
 
       <section className="mb-8">
-        <h3 className="mb-3 text-2xl font-semibold text-pine">Co jsem viděl</h3>
+        <h3 className="mb-3 text-2xl font-semibold text-fern">Co jsem viděl</h3>
         {data.spatreni.length === 0 ? (
           <p className="text-muted">Zatím žádná spatření.</p>
         ) : (
@@ -83,7 +83,7 @@ export default function ZapisnikPage() {
                       {s.ptak.nazev_cz}
                     </span>
                     <span className="mt-2 block text-sm text-muted">
-                      <span className="font-medium text-pine">Poznámky:</span>{' '}
+                      <span className="font-medium text-fern">Poznámky:</span>{' '}
                       {s.poznamka || 'bez poznámky'}
                     </span>
                   </span>
@@ -100,7 +100,7 @@ export default function ZapisnikPage() {
       </section>
 
       <section>
-        <h3 className="mb-3 text-2xl font-semibold text-pine">Poznámky</h3>
+        <h3 className="mb-3 text-2xl font-semibold text-fern">Poznámky</h3>
         <p className="whitespace-pre-line rounded-xl border border-line bg-white/60 p-4 leading-relaxed">
           {data.poznamky || 'Bez poznámek.'}
         </p>

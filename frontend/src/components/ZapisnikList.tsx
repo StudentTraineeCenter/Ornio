@@ -31,13 +31,13 @@ export default function ZapisnikList() {
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-xl border px-3 py-2.5 transition ${
                   isActive
-                    ? 'border-moss bg-lime'
+                    ? 'ornio-selected-nav border-moss bg-lime text-pine'
                     : 'border-transparent hover:border-line hover:bg-cream'
                 }`
               }
             >
               <span className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-pine text-cream">
-                <span className="text-lg font-semibold leading-none">{den}</span>
+                <span className="text-lg font-semibold leading-none text-lime">{den}</span>
                 <span className="mt-0.5 text-[10px] uppercase leading-none tracking-wide text-lime">
                   {mesic}
                 </span>

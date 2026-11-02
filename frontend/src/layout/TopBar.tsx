@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 const prepinac = ({ isActive }: { isActive: boolean }) =>
   `flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition ${
     isActive
-      ? 'bg-pine text-cream shadow-sm'
+      ? 'top-nav-active bg-pine text-on-dark shadow-sm'
       : 'text-muted hover:bg-cream/70 hover:text-pine'
   }`
 
@@ -28,7 +28,7 @@ export default function TopBar() {
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-pine text-lime">
             <Feather size={20} />
           </span>
-          <span className="text-2xl font-semibold text-pine">Ornio</span>
+          <span className="ornio-logo text-2xl font-semibold text-pine">Ornio</span>
         </NavLink>
 
         <nav className="hidden items-center gap-1 rounded-xl bg-night/5 p-1 md:flex">

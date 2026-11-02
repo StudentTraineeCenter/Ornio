@@ -10,7 +10,7 @@ export default function HnizdiciWidget() {
   })
 
   return (
-    <section className="border-t border-line bg-lime/50 p-4">
+    <section className="ornio-hnizdici-widget border-t border-line bg-lime/50 p-4">
       <h3 className="mb-2 flex items-center gap-2 text-base font-semibold text-pine">
         <Egg size={16} />
         Právě hnízdí

@@ -43,7 +43,7 @@ export default function DruhSearch() {
               className={({ isActive }) =>
                 `block rounded-xl border px-3 py-2.5 transition ${
                   isActive
-                    ? 'border-moss bg-lime'
+                    ? 'ornio-selected-nav border-moss bg-lime text-pine'
                     : 'border-transparent hover:border-line hover:bg-cream'
                 }`
               }
