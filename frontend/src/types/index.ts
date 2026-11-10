@@ -45,6 +45,7 @@ export interface Spatreni {
   id: UUID
   zapisnik_id: UUID
   ptak_id: UUID
+  chovani: string
   cas_pozorovani: string
   poznamka: string
 }

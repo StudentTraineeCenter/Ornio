@@ -6,13 +6,13 @@ import type { UUID } from '../types'
 
 const mesice = ['led', 'úno', 'bře', 'dub', 'kvě', 'čvn', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro']
 
-export default function DruhPage() {
-  const { druhId } = useParams()
+export default function PtakPage() {
+  const { ptakId } = useParams()
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['druh', druhId],
-    queryFn: () => getPtak(druhId as UUID),
-    enabled: !!druhId,
+    queryKey: ['ptak', ptakId],
+    queryFn: () => getPtak(ptakId as UUID),
+    enabled: !!ptakId,
   })
 
   if (isLoading) return <p className="p-6 text-muted">Načítám...</p>

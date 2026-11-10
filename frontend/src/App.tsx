@@ -20,7 +20,7 @@ export default function App() {
             path="encyklopedie"
             element={<Prazdno text="Vyberte druh v seznamu vlevo." />}
           />
-          <Route path="encyklopedie/:druhId" element={<PtakPage />} />
+          <Route path="encyklopedie/:ptakId" element={<PtakPage />} />
           <Route path="denik/novy" element={<ZapisnikFormPage />} />
           <Route path="denik/:zapisnikId/upravit" element={<ZapisnikFormPage />} />
         </Route>

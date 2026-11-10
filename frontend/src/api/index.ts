@@ -36,7 +36,7 @@ export async function getZapisnik(id: UUID): Promise<ZapisnikDetail> {
     spatreni: spatreni
       .filter((s) => s.zapisnik_id === id)
       .sort((a, b) => a.cas_pozorovani.localeCompare(b.cas_pozorovani))
-      .map((s) => ({ ...s, ptak: ptaky.find((d) => d.id === s.ptak_id)! })),
+      .map((s) => ({ ...s, ptak: ptaky.find((ptak) => ptak.id === s.ptak_id)! })),
   }
 }
 
@@ -44,29 +44,29 @@ export async function getPtaky(q = ''): Promise<Ptaka[]> {
   await latency(150)
   const hledane = q.trim().toLowerCase()
   return ptaky.filter(
-    (d) =>
-      d.nazev_cz.toLowerCase().includes(hledane) ||
-      d.nazev_lat.toLowerCase().includes(hledane),
+    (ptak) =>
+      ptak.nazev_cz.toLowerCase().includes(hledane) ||
+      ptak.nazev_lat.toLowerCase().includes(hledane),
   )
 }
 
 export async function getPtak(id: UUID): Promise<PtakaDetail> {
   await latency()
-  const druh = ptaky.find((d) => d.id === id)
-  if (!druh) throw new Error('Druh nenalezen')
+  const ptak = ptaky.find((item) => item.id === id)
+  if (!ptak) throw new Error('Pták nenalezen')
 
   return {
-    ...druh,
-    typ_ptaka: typyPtaku.find((t) => t.id === druh.typ_ptaka_id)!,
+    ...ptak,
+    typ_ptaka: typyPtaku.find((t) => t.id === ptak.typ_ptaka_id)!,
   }
 }
 
 export async function getHnizdiciPtak(mesic = new Date().getMonth() + 1,): Promise<Ptaka[]> {
   await latency(150)
-  return ptaky.filter((d) =>
-    d.hnizdi_od_mesic <= d.hnizdi_do_mesic
-      ? mesic >= d.hnizdi_od_mesic && mesic <= d.hnizdi_do_mesic
-      : mesic >= d.hnizdi_od_mesic || mesic <= d.hnizdi_do_mesic,
+  return ptaky.filter((ptak) =>
+    ptak.hnizdi_od_mesic <= ptak.hnizdi_do_mesic
+      ? mesic >= ptak.hnizdi_od_mesic && mesic <= ptak.hnizdi_do_mesic
+      : mesic >= ptak.hnizdi_od_mesic || mesic <= ptak.hnizdi_do_mesic,
   )
 }
 
@@ -83,7 +83,7 @@ function ulozSpatreni(zapisnik_id: UUID, radky: SpatreniInput[]) {
   }
 
   radky.forEach((r) => {
-    spatreni.push({ id: crypto.randomUUID(), zapisnik_id, ...r })
+    spatreni.push({ id: crypto.randomUUID(), zapisnik_id, chovani: '', ...r })
   })
 }
 
@@ -95,7 +95,7 @@ export async function addSpatreni(
   if (!zapisniky.some((z) => z.id === zapisnik_id)) {
     throw new Error('Výlet nenalezen')
   }
-  spatreni.push({ id: crypto.randomUUID(), zapisnik_id, ...input })
+  spatreni.push({ id: crypto.randomUUID(), zapisnik_id, chovani: '', ...input })
   return getZapisnik(zapisnik_id)
 }
 
