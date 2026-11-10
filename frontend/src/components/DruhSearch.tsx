@@ -8,7 +8,7 @@ export default function DruhSearch() {
   const [q, setQ] = useState('')
 
   const { data, isLoading } = useQuery({
-    queryKey: ['druhy', q],
+    queryKey: ['ptaky', q],
     queryFn: () => getPtaky(q),
   })
 
