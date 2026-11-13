@@ -220,7 +220,6 @@ __marimo__/
 .streamlit/secrets.toml
 frontend/package-lock.json
 frontend/poznamky.md
-
-
-graphify-out/
 frontend/node_modules/.package-lock.json
+node_modules/
+graphify-out/

@@ -1,0 +1,30 @@
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import AppLayout from './layout/AppLayout'
+import Prazdno from './pages/Prazdno'
+import ZapisnikPage from './pages/ZapisnikPage'
+import PtakPage from './pages/PtakPage'
+import ZapisnikFormPage from './pages/ZapisnikFormPage'
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route index element={<Navigate to="/denik" replace />} />
+          <Route
+            path="denik"
+            element={<Prazdno text="Vyberte výlet v seznamu vlevo." />}
+          />
+          <Route path="denik/:zapisnikId" element={<ZapisnikPage />} />
+          <Route
+            path="encyklopedie"
+            element={<Prazdno text="Vyberte druh v seznamu vlevo." />}
+          />
+          <Route path="encyklopedie/:ptakId" element={<PtakPage />} />
+          <Route path="denik/novy" element={<ZapisnikFormPage />} />
+          <Route path="denik/:zapisnikId/upravit" element={<ZapisnikFormPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
