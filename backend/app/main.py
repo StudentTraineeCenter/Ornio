@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from .config import settings
 from .database import get_db
-from app.routers import typy_ptaku
+from app.routers import typy_ptaku, ptaky
 
 app = FastAPI(title="Ornio API")
 
@@ -17,6 +17,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def default_health():
+    return{"status" : "up - ok"}
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
@@ -26,3 +30,5 @@ def health_db(db: Session = Depends(get_db)):
     return {"database": db.execute(text("SELECT current_database()")).scalar()}
 
 app.include_router(typy_ptaku.router)
+
+app.include_router(ptaky.router)

@@ -16,17 +16,17 @@ class TypyPtaku(Base):
     nazev: Mapped[str] = mapped_column(String(100), unique=True)
 
 class Ptaky(Base):
-    __tablename__ = "Ptaky"
+    __tablename__ = "ptaky"
 
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         primary_key=True,
         server_default=text("gen_random_uuid()")
     )
-    nazev: Mapped[str] = mapped_column(String(100), unique=True)
+    nazev_cz: Mapped[str] = mapped_column(String(100), unique=True)
 
 class Lokality(Base):
-    __tablename__ = "Lokality"
+    __tablename__ = "lokality"
 
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
