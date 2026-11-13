@@ -249,3 +249,5 @@ dist-ssr
 !.env.example
 
 poznamky.md
+
+graphify-out/
