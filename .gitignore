@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+frontend/package-lock.json
+frontend/poznamky.md
+
+
+graphify-out/
+frontend/node_modules/.package-lock.json
