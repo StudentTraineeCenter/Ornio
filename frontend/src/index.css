@@ -60,6 +60,21 @@ a.bg-night {
   color: var(--color-cream);
 }
 
+:root.dark
+  button.bg-pine:not(:hover):not(:active),
+:root.dark
+  button.bg-fern:not(:hover):not(:active),
+:root.dark
+  button.bg-night:not(:hover):not(:active),
+:root.dark
+  a.bg-pine:not(:hover):not(:active),
+:root.dark
+  a.bg-fern:not(:hover):not(:active),
+:root.dark
+  a.bg-night:not(:hover):not(:active) {
+  color: var(--color-on-dark);
+}
+
 .bg-white\/60,
 .bg-white\/70 {
   background-color: color-mix(in srgb, var(--color-cream) 72%, transparent);
